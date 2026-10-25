@@ -13,7 +13,7 @@ Homepage: https://github.com/lingmoos/text-editor
 
 Package: lingmo-text-editor
 Architecture: any
-Depends: lingmo-sdk,
+Depends: lingmo-sdk-dev,
          ${misc:Depends},
          ${shlibs:Depends}
 Description: Lingmo OS Text Editor
