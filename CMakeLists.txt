@@ -11,7 +11,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(GNUInstallDirs)
 include(CTest)
 
-find_package(LingmoToolkit REQUIRED)
+find_package(LingmoSDK REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(ICU REQUIRED IMPORTED_TARGET icu-uc)
 # PCRE2 runs regular-expression find.
@@ -31,7 +31,7 @@ add_library(editor-core STATIC
     src/unicode.cpp
 )
 target_include_directories(editor-core PUBLIC src)
-target_link_libraries(editor-core PUBLIC Lingmo::ToolkitBase PRIVATE PkgConfig::ICU PkgConfig::PCRE2)
+target_link_libraries(editor-core PUBLIC Lingmo::SDKBase PRIVATE PkgConfig::ICU PkgConfig::PCRE2)
 
 add_library(editor-ui STATIC
     src/application.cpp
@@ -47,7 +47,7 @@ add_library(editor-ui STATIC
     src/syntaxtheme.cpp
 )
 target_include_directories(editor-ui PUBLIC src)
-target_link_libraries(editor-ui PUBLIC editor-core Lingmo::Toolkit PRIVATE PkgConfig::ICU)
+target_link_libraries(editor-ui PUBLIC editor-core Lingmo::SDK PRIVATE PkgConfig::ICU)
 
 add_executable(${PROJECT_NAME} src/main.cpp)
 target_compile_definitions(${PROJECT_NAME} PRIVATE TEXT_EDITOR_VERSION="${PROJECT_VERSION}")
